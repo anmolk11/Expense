@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Report</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/report.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/">Add</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/expenses">Expenses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/report">Report</a>
+        </li>
+      </ul>
+    <div class="container">
+        <div class="box">
+            <label>Total Expense so far:</label>
+            <span id="total-so-far">$0.00</span>
+        </div>
+        <div class="box">
+            <label>Total Expense for Month:</label>
+            <span id="total-for-month">$0.00</span>
+        </div>
+        <div class="box">
+            <label>Total Expense for Week:</label>
+            <span id="total-for-week">$0.00</span>
+        </div>
+        <div class="box">
+            <label>Total Expense for Day:</label>
+            <span id="total-for-day">$0.00</span>
+        </div>
+    </div>
+</body>
+</html>

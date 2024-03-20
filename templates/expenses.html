@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/expenses.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Add</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/expenses">Expenses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/report">Report</a>
+        </li>
+      </ul>
+    <div class="header">
+        <h3><a href="/expenses">All Expenses</a></h3>
+    </div>
+    <form action="/filter_expenses" method="post">
+        <label for="filter">Filter by:</label>
+        <input type="date" id="date" name="date" required>
+        <input type="submit" value="Apply">
+        {% if display %}
+        <h4>Total on {{ date }} : <span style="color: green;">{{ total }}</span></h4>
+        {% else %}
+        <h4>Total : <span style="color: green;">{{ total }}</span></h4>
+        {% endif %}
+    </form>
+    <table>
+        <tr>
+            <th>Purpose</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense[1] }}</td>
+            <td>{{ expense[2] }}</td>
+            <td>{{ expense[3] }}</td>
+            <td>
+                <form action="/delete_expense" method="post" style="display: inline;">
+                    <input type="hidden" name="expense_id" value="{{ expense[0]}}">
+                    <input type="submit" value="&#128465;">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
