@@ -10,5 +10,6 @@ def format_indian_currency(number):
     return '\u20B9 ' + formatted_number
 
 
+
 if __name__ == '__main__':
     pass
